@@ -14,5 +14,12 @@
 
         <h1>#{testViewCdi.testString}</h1>
 
+        <h:form>
+            <h:outputLabel for="multiple" value="Multiple:" />
+            <p:selectCheckboxMenu id="multiple" value="#{checkboxView.selectedCities}" label="Cities" multiple="true"
+                                  filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                <f:selectItems value="#{checkboxView.cities}" />
+            </p:selectCheckboxMenu>
+        </h:form>
     </h:body>
 </html>
