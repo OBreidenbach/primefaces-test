@@ -9,10 +9,26 @@
         <title>PrimeFaces Test</title>
     </h:head>
     <h:body>
+        <h:form>
+            <p:dialog id="test" widgetVar="myDialog">
 
-        <h1>#{testView.testString}</h1>
+                <p:selectOneMenu value="#{myValue}">
+                    <f:selectItem itemValue="1" itemLabel="1. Option"/>
+                    <f:selectItem itemValue="2" itemLabel="2. Option"/>
+                    <f:selectItem itemValue="3" itemLabel="3. Option"/>
+                </p:selectOneMenu>
+            </p:dialog>
 
-        <h1>#{testViewCdi.testString}</h1>
+            <h1>#{testView.testString}</h1>
 
+            <h1>#{testViewCdi.testString}</h1>
+
+            <p:commandButton value="Start Dialog" onclick="PF('myDialog').show(); return false;"/>
+            <p:selectOneMenu id="test3" value="#{myValue}">
+                <f:selectItem itemValue="1" itemLabel="1. Option"/>
+                <f:selectItem itemValue="2" itemLabel="2. Option"/>
+                <f:selectItem itemValue="3" itemLabel="3. Option"/>
+            </p:selectOneMenu>
+        </h:form>
     </h:body>
 </html>
