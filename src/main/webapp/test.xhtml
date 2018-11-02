@@ -10,9 +10,14 @@
     </h:head>
     <h:body>
 
-        <h1>#{testView.testString}</h1>
-
         <h1>#{testViewCdi.testString}</h1>
+
+        <p:selectCheckboxMenu value="#{testViewCdi.selected}" id="items"
+                              filter="true" updateLabel="true"
+                              emptyLabel="Please select"
+                              filterMatchMode="contains">
+            <f:selectItems value="#{testViewCdi.options}"/>
+        </p:selectCheckboxMenu>
 
     </h:body>
 </html>
