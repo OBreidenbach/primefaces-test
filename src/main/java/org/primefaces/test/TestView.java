@@ -1,26 +1,31 @@
 package org.primefaces.test;
 
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
+import java.util.Arrays;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "testView")
 @ViewScoped
 public class TestView implements Serializable {
-    
-    private String testString;
-    
-    @PostConstruct  
-    public void init() {
-        testString = "Welcome to PrimeFaces!!!";
+
+    private List<SelectItem> options = Arrays.asList(
+            new SelectItem("Option1"), new SelectItem("Option2")
+    );
+
+    private String selected;
+
+    public List<SelectItem> getOptions() {
+        return options;
     }
 
-    public String getTestString() {
-        return testString;
+    public String getSelected() {
+        return selected;
     }
 
-    public void setTestString(String testString) {
-        this.testString = testString;
-    }    
+    public void setSelected(String selected) {
+        this.selected = selected;
+    }
 }

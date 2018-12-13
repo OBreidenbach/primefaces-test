@@ -9,10 +9,86 @@
         <title>PrimeFaces Test</title>
     </h:head>
     <h:body>
+        <h:form id="form">
+            <!--<p:log />-->
+            <h1>Standard</h1>
+            <p:selectOneRadio id="standard"
+                              value="#{testView.selected}">
+                <p:ajax partialSubmit="true" process="@this"/>
+                <f:selectItems value="#{testView.options}" />
+            </p:selectOneRadio>
 
-        <h1>#{testView.testString}</h1>
 
-        <h1>#{testViewCdi.testString}</h1>
+            <h1>Custom</h1>
+            <p:selectOneRadio id="custom"
+                              value="#{testView.selected}"
+                              layout="custom">
+                <p:ajax partialSubmit="true" process="@this"/>
+                <f:selectItems value="#{testView.options}"/>
+            </p:selectOneRadio>
+            <!-- Radiobuttons -->
+            <p:repeat id="custom_options"
+                      value="#{testView.options}"
+                      var="option"
+                      varStatus="status">
+                <!-- Radiobutton -->
+                <p:radioButton id="option"
+                               for="form:custom"
+                               itemIndex="#{status.index}"/>
+                <!-- Label -->
+                <label for="form:custom:#{status.index}_clone">
+                    <h:outputText value="#{option.label}"/>
+                </label>
+            </p:repeat>
 
+
+            <h1>Custom2</h1>
+            <p:selectOneRadio id="custom2"
+                              value="#{testView.selected}"
+                              layout="custom">
+                <p:ajax partialSubmit="true" process=":form:custom2"/>
+                <f:selectItems value="#{testView.options}"/>
+            </p:selectOneRadio>
+            <!-- Radiobuttons -->
+            <p:repeat id="custom2_options"
+                      value="#{testView.options}"
+                      var="option"
+                      varStatus="status">
+                <!-- Radiobutton -->
+                <p:radioButton id="option2"
+                               for="form:custom2"
+                               itemIndex="#{status.index}"/>
+                <!-- Label -->
+                <label for="form:custom2:#{status.index}_clone">
+                    <h:outputText value="#{option.label}"/>
+                </label>
+            </p:repeat>
+
+
+            <h1>Custom with container</h1>
+            <p:outputPanel id="container">
+            <p:selectOneRadio id="customConainer"
+                              value="#{testView.selected}"
+                              layout="custom">
+                <p:ajax partialSubmit="true" process="container"/>
+                <f:selectItems value="#{testView.options}"/>
+            </p:selectOneRadio>
+            <!-- Radiobuttons -->
+            <p:repeat id="customConainer_options"
+                      value="#{testView.options}"
+                      var="option"
+                      varStatus="status">
+                <!-- Radiobutton -->
+                <p:radioButton id="optionContainer"
+                               for="form:customConainer"
+                               itemIndex="#{status.index}"/>
+                <!-- Label -->
+                <label for="form:customConainer:#{status.index}_clone">
+                    <h:outputText value="#{option.label}"/>
+                </label>
+            </p:repeat>
+            </p:outputPanel>
+
+        </h:form>
     </h:body>
 </html>
