@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 
@@ -9,10 +7,52 @@
         <title>PrimeFaces Test</title>
     </h:head>
     <h:body>
+        <h:form id="formButton">
+            <p:commandButton id="buttonShow"
+                             onclick="PF('dialogVar').show()"
+                             value="Open Dialog"/>
+        </h:form>
+        <p:dialog id="dialog"
+                  positionType="absolute"
+                  position="center top+30"
+                  widgetVar="dialogVar"
+                  visible="true"
+                  closable="true"
+        resizable="true">
 
-        <h1>#{testView.testString}</h1>
-
-        <h1>#{testViewCdi.testString}</h1>
+            <h:form id="formDialog">
+                <p:accordionPanel id="accordionPanel1" activeIndex="0,1,2,4" multiple="true" >
+                    <p:tab id="tab1" title="Tab 1">
+                        <p:repeat value="#{testViewCdi.list}" var="text">
+                            <h:outputText value="#{text}"/><br/>
+                        </p:repeat>
+                    </p:tab>
+                    <p:tab id="tab2" title="Tab 2">
+                        <p:repeat value="#{testViewCdi.list}" var="text">
+                            <h:outputText value="#{text}"/><br/>
+                        </p:repeat>
+                    </p:tab>
+                    <p:tab id="tab3" title="Tab 3">
+                        <p:repeat value="#{testViewCdi.list}" var="text">
+                            <h:outputText value="#{text}"/><br/>
+                        </p:repeat>
+                    </p:tab>
+                    <p:tab id="tab4" title="Tab 4">
+                        <p:repeat value="#{testViewCdi.list}" var="text">
+                            <h:outputText value="#{text}"/><br/>
+                        </p:repeat>
+                    </p:tab>
+                    <p:tab id="tab5" title="Tab 5">
+                        <p:repeat value="#{testViewCdi.list}" var="text">
+                            <h:outputText value="#{text}"/><br/>
+                        </p:repeat>
+                    </p:tab>
+                </p:accordionPanel>
+                <p:commandButton id="buttonHide"
+                                 onclick="PF('dialogVar').hide()"
+                                 value="Hide Dialog"/>
+            </h:form>
+        </p:dialog>
 
     </h:body>
 </html>
