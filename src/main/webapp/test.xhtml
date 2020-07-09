@@ -3,7 +3,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:mytags="http://xmlns.jcp.org/jsf/composite/tags">
 
     <h:head>
         <title>PrimeFaces Test</title>
@@ -12,7 +13,8 @@
 
         <h1>#{testView.testString}</h1>
         <h:form id="frmTest">
-            
+            <h1>DataTable in composite</h1>
+            <mytags:myDataTable value="#{testView.rows}" myrows="10"/>
         </h:form>
 
     </h:body>

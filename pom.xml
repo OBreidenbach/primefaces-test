@@ -18,10 +18,15 @@
     </properties>
 
     <dependencies>
+        <!--        <dependency>
+                    <groupId>org.primefaces</groupId>
+                    <artifactId>primefaces</artifactId>
+                    <version>8.0</version>
+                </dependency>-->
         <dependency>
-            <groupId>org.primefaces</groupId>
+            <groupId>com.github.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>8.0</version>
+            <version>master-SNAPSHOT</version>
         </dependency>
 
         <!-- javax.* APIs -->
@@ -107,7 +112,7 @@
             <artifactId>openwebbeans-el22</artifactId>
             <version>${owb.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-validation_2.0_spec</artifactId>

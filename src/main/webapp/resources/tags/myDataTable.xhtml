@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <cc:interface>
+        <cc:attribute name="value"  required="true"/>
+        <cc:attribute name="myrows" type="java.lang.String" default="5" />
+    </cc:interface>
+
+    <cc:implementation>
+        <p:dataTable id="pf_dataTable"
+                     value="#{cc.attrs.value}"
+                     var="row"
+                     rows="#{cc.attrs.myrows}"
+                     paginator="true"
+                     rowsPerPageTemplate="2,5,10,30">
+
+            <p:column id="row" filterBy="#{row.str}" filterMatchMode="contains" sortBy="#{row.str}">
+                #{row.str}
+            </p:column>
+
+        </p:dataTable>
+    </cc:implementation>
+</ui:composition>
