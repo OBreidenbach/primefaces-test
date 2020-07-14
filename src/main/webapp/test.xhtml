@@ -12,7 +12,32 @@
 
         <h1>#{testView.testString}</h1>
 
-        <h1>#{testViewCdi.testString}</h1>
+        <h:form id="myForm">
+            <p:dataGrid id="grid"
+                        columns="1"
+                        value="#{testViewCdi.entries}"
+                        var="_it"
+                        paginator="true"
+                        paginatorAlwaysVisible="true"
+                        rowsPerPageTemplate="1,2,3"
+                        first="#{testViewCdi.first}"
+                        rows="#{testViewCdi.columns}"
+                        binding="#{myDataGrid}">
+                <p:ajax event="page" update="@form:anotherpager" />
+                <h:outputText value="value: #{_it}"/>
+            </p:dataGrid>
 
+            <h:panelGrid id="anotherpager" columns="2">
+                <h:outputLabel for="first" value="first="/>
+                <p:spinner id="first" value="#{myDataGrid.first}">
+                    <p:ajax update="grid"/>
+                </p:spinner>
+
+                <h:outputLabel for="entries" value="columns="/>
+                <p:spinner id="entries" value="#{myDataGrid.rows}">
+                    <p:ajax update="grid"/>
+                </p:spinner>
+            </h:panelGrid>
+        </h:form>
     </h:body>
 </html>

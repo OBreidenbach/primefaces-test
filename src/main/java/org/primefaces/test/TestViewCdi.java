@@ -2,24 +2,49 @@ package org.primefaces.test;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 @Named
-@RequestScoped
-public class TestViewCdi {
-    
-    private String testString;
-    
-    @PostConstruct  
+@ViewScoped
+public class TestViewCdi implements Serializable
+{
+    private List<String> entries ;
+    private int first = 0;
+    private int columns = 1;
+
+    @PostConstruct
     public void init() {
-        testString = "Welcome to PrimeFaces (from CDI!) !!!";
+        entries = Arrays.asList("a", "b", "c", "d", "e", "f", "g");
+        System.out.println("TestViewCdi init() done.");
     }
 
-    public String getTestString() {
-        return testString;
+    public List<String> getEntries()
+    {
+        return entries;
     }
 
-    public void setTestString(String testString) {
-        this.testString = testString;
-    }    
+    public int getColumns()
+    {
+        return columns;
+    }
+
+    public void setColumns(int columns)
+    {
+        this.columns = columns;
+    }
+
+    public int getFirst()
+    {
+        return first;
+    }
+
+    public void setFirst(int first)
+    {
+        this.first = first;
+    }
 }
+
